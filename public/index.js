@@ -1,33 +1,23 @@
-/*
- * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
- * This devtool is neither made for production nor for readable output files.
- * It uses "eval()" calls to create a separate source file in the browser devtools.
- * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
- * or disable the default devtool with "devtool: false".
- * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
- */
-/******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
-/******/ 	var __webpack_modules__ = ({
+var imageData = [
+    { path: "images/aurelia.svg", card: "aurelia" },
+    { path: "images/aurelia.svg", card: "aurelia" },
+    { path: "images/vue.svg", card: "vue" },
+    { path: "images/vue.svg", card: "vue" },
+    { path: "images/ember.svg", card: "ember" },
+    { path: "images/ember.svg", card: "ember" },
+    { path: "images/backbone.svg", card: "backbone" },
+    { path: "images/backbone.svg", card: "backbone" }
+];
+// Function to dynamically create image elements with data-card attribute
+function createImageElements() {
+    var memoryCards = document.querySelectorAll('.memory-card');
+    memoryCards.forEach(function (card, index) {
+        var frontFace = card.querySelector('.front-face');
+        frontFace.src = imageData[index].path;
+        card.setAttribute('data-card', imageData[index].card);
+    });
+}
 
-/***/ "./src/index.ts":
-/*!**********************!*\
-  !*** ./src/index.ts ***!
-  \**********************/
-/***/ (() => {
-
-eval("\nconsole.log(\"test\");\n\n\n//# sourceURL=webpack://typescript-final-project/./src/index.ts?");
-
-/***/ })
-
-/******/ 	});
-/************************************************************************/
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = {};
-/******/ 	__webpack_modules__["./src/index.ts"]();
-/******/ 	
-/******/ })()
-;
+document.addEventListener('DOMContentLoaded', function () {
+    createImageElements();
+});

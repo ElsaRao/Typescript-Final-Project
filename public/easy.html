@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="body">
+        <div class="container">
+            <h1 class="level1">Level 1</h1>
+            <div class="countDown-div">
+                <h2 id="countdown">30 seconds</h2>
+            </div>
+            <section class="memory-game">
+                <div class="memory-card height" data-card="">
+                    <img class="front-face" src="" alt="Card" >
+                    <img class="back-face" src="images/js-badge.svg" alt="JS Badge" >
+                </div>
+                <div class="memory-card height" data-card="">
+                    <img class="front-face" src="" alt="Card" >
+                    <img class="back-face" src="images/js-badge.svg" alt="JS Badge" >
+                </div>
+                <div class="memory-card height" data-card="">
+                    <img class="front-face" src="" alt="Card" >
+                    <img class="back-face" src="images/js-badge.svg" alt="JS Badge" >
+                </div>
+                <div class="memory-card height" data-card="">
+                    <img class="front-face" src="" alt="Card" >
+                    <img class="back-face" src="images/js-badge.svg" alt="JS Badge" >
+                </div>
+                <div class="memory-card height" data-card="">
+                    <img class="front-face" src="" alt="Card" >
+                    <img class="back-face" src="images/js-badge.svg" alt="JS Badge" >
+                </div>
+                <div class="memory-card height" data-card="">
+                    <img class="front-face" src="" alt="Card" >
+                    <img class="back-face" src="images/js-badge.svg" alt="JS Badge" >
+                </div>
+                <div class="memory-card height" data-card="">
+                    <img class="front-face" src="" alt="Card" >
+                    <img class="back-face" src="images/js-badge.svg" alt="JS Badge" >
+                </div>
+                <div class="memory-card height" data-card="">
+                    <img class="front-face" src="" alt="Card" >
+                    <img class="back-face" src="images/js-badge.svg" alt="JS Badge" >
+                </div>
+            </section>
+            <section id="popup1" class="overlay">
+                <div class="popup">
+                    <h2 id="contentWonLost"></h2>
+                    <div class="content" id="contectWrite">	
+                </div>
+                <div class="cover"> 
+                    <button onclick="document.location='first-page.html'" class="buttonx" style="vertical-align:middle"><span>REPLAY </span></button>
+                    <button onclick="document.location='second-page.html'"class="buttonx" style="vertical-align:middle"><span class="level" style="cursor: not-allowed;">NEXT LEVEL </span></button>
+                </div>
+            </div>
+        </section>
+        <audio preload="auto" id="myAudio">
+            <source src="audio/zen-garden.mp3" type="audio/mp3">
+        </audio>
+        <div class="music">
+            <i class="fas fa-volume-up" onclick="playAudio()"></i>
+            <i class="fas fa-volume-mute" onclick="stopAudio()"></i>
+        </div>
+    </div>    
+    <script src="index.js"></script>
+</body>
+
+</html>

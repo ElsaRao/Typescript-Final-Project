@@ -1,3 +1,20 @@
+// Declaring variables
+let cards = document.querySelectorAll('.memory-card') as NodeListOf<HTMLElement>;
+let flippedcard = false;
+let firstcard: HTMLElement | null;
+let secondcard: HTMLElement | null;
+let totCards = 8;
+let counter = 0;
+let CWL: string | undefined;
+let CW: string | undefined;
+let second: number | undefined;
+let timeleft = 30;
+let downloadTimer: NodeJS.Timeout;
+let audio = document.getElementById("myAudio") as HTMLMediaElement;
+let moves = 0; // Initialize the move counter
+
+
+// Image data
 const imageData: { path: string; card: string }[] = [
     { path: "images/aurelia.svg", card: "aurelia" },
     { path: "images/aurelia.svg", card: "aurelia" },
@@ -24,23 +41,15 @@ document.addEventListener('DOMContentLoaded', () => {
     createImageElements();
 });
 
-// declaring variables
-let cards = document.querySelectorAll('.memory-card') as NodeListOf<HTMLElement>;
+// Function to calculate the final score based on moves and time
+function calculateScore(moves: number, time: number): number {
+    const baseScore = 100; 
+    const score = baseScore - moves * 10 + time * 5; 
+    return Math.max(score, 0); 
+}
 
-let flippedcard = false;
-let firstcard: HTMLElement | null;
-let secondcard: HTMLElement | null;
-let totCards = 8;
-let counter = 0;
-let CWL: string | undefined;
-let CW: string | undefined;
-let second: number | undefined;
-let timeleft = 30;
-let downloadTimer: NodeJS.Timeout;
-let audio = document.getElementById("myAudio") as HTMLMediaElement;
-
-// for result
-function result(CWL: string, CW: string): void {
+// Function to display the result
+function result(CWL: string, CW: string, finalScore: number): void {
     let overlay = document.getElementsByClassName("overlay")[0] as HTMLElement;
     overlay.style.visibility = "visible";
     overlay.style.opacity = "1";
@@ -50,7 +59,7 @@ function result(CWL: string, CW: string): void {
     contectWrite.innerHTML = CW;
 }
 
-// for flipping the cards
+// Function to flip the cards
 function flipcard(this: HTMLElement): void {
     this.classList.toggle('flip');
     if (!flippedcard) {
@@ -62,10 +71,12 @@ function flipcard(this: HTMLElement): void {
     secondcard = this;
     flippedcard = false;
 
+    moves++; // Increment the move counter
+    // document.getElementById("moves")!.innerHTML = moves.toString();
     match();
 }
 
-// for the matching of cards
+// Function to check the matching of cards
 function match(): void {
     if (firstcard?.dataset.card === secondcard?.dataset.card) {
         disable();
@@ -73,9 +84,10 @@ function match(): void {
         if (totCards / 2 === counter) {
             clearInterval(downloadTimer);
             second = 30 - timeleft;
+            const finalScore = calculateScore(moves, second); // Calculate the final score
             CWL = "CONGRATULATIONS!!!";
-            CW = "YOU WON THE GAME IN " + --second + " SECONDS";
-            result(CWL, CW);
+            CW = `YOU WON THE GAME IN ${second} SECONDS. YOUR FINAL SCORE IS : <strong>${finalScore}</strong>`;
+            result(CWL, CW, finalScore);
         }
         return;
     }
@@ -83,13 +95,13 @@ function match(): void {
     unflip();
 }
 
-// removing the event listener from the variables
+// Function to remove the event listener from the variables
 function disable(): void {
     firstcard?.removeEventListener('click', flipcard);
     secondcard?.removeEventListener('click', flipcard);
 }
 
-// removing the class from the variables
+// Function to remove the class from the variables
 function unflip(): void {
     setTimeout(function () {
         firstcard?.classList.remove('flip');
@@ -97,7 +109,7 @@ function unflip(): void {
     }, 1000);
 }
 
-// for the shuffling of cards
+// Function to shuffle the cards
 function shuffle(): void {
     cards.forEach(card => {
         let randomCards = Math.floor(Math.random() * 8);
@@ -108,7 +120,7 @@ shuffle();
 
 cards.forEach(card => card.addEventListener('click', flipcard));
 
-// counter
+// Counter
 downloadTimer = setInterval(function () {
     if (timeleft <= 0) {
         clearInterval(downloadTimer);
@@ -118,9 +130,11 @@ downloadTimer = setInterval(function () {
         buttonx.style.opacity = "0.6";
         let countdown = document.getElementById("countdown") as HTMLElement;
         countdown.innerHTML = "Time Up!";
+        second = 30 - timeleft;
+        const finalScore = calculateScore(moves, second); // Calculate the final score
         CWL = "OPSS :(";
         CW = "TIME IS OVER";
-        result(CWL, CW);
+        result(CWL, CW, finalScore);
     } else {
         let countdown = document.getElementById("countdown") as HTMLElement;
         countdown.innerHTML = timeleft + " seconds";

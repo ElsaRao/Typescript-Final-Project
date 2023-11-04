@@ -23,7 +23,11 @@ const imageData: { path: string; card: string }[] = [
     { path: "images/ember.svg", card: "ember" },
     { path: "images/ember.svg", card: "ember" },
     { path: "images/backbone.svg", card: "backbone" },
-    { path: "images/backbone.svg", card: "backbone" }
+    { path: "images/backbone.svg", card: "backbone" },
+    { path: "images/angular.svg", card: "angular" },
+    { path: "images/angular.svg", card: "angular" },
+    { path: "images/react.svg", card: "react" },
+    { path: "images/react.svg", card: "react" }
 ];
 
 // Function to dynamically create image elements with data-card attribute
@@ -148,3 +152,60 @@ function playAudio(): void {
 function stopAudio(): void {
     audio.pause();
 }
+
+// Medium Level
+
+// Declaring variables
+let cards2 = document.querySelectorAll('.memory-card') as NodeListOf<HTMLElement>;
+let flippedcard2 = false;
+let firstcard2: HTMLElement | null;
+let secondcard2: HTMLElement | null;
+let totCards2 = 12;
+let counter2 = 0;
+let CWL2: string | undefined;
+let CW2: string | undefined;
+let second2: number | undefined;
+let timeleft2 = 40;
+let moves2 = 0; // Initialize the move counter
+
+
+
+
+
+// Function to flip the cards
+function flipcard2(this: HTMLElement): void {
+    this.classList.toggle('flip');
+    if (!flippedcard2) {
+        flippedcard2 = true;
+        firstcard2 = this;
+        return;
+    }
+
+    secondcard2 = this;
+    flippedcard2 = false;
+
+    moves2++; // Increment the move counter
+    // document.getElementById("moves")!.innerHTML = moves.toString();
+    matchMedium();
+}
+
+// Function to check the matching of cards
+function matchMedium(): void {
+    if (firstcard2?.dataset.card === secondcard2?.dataset.card) {
+        disable();
+        counter2++;
+        if (totCards2 / 2 === counter) {
+            clearInterval(downloadTimer);
+            second2 = 40 - timeleft2;
+            const finalScore = calculateScore(moves, second2); // Calculate the final score
+            CWL2 = "CONGRATULATIONS!!!";
+            CW2 = `YOU WON THE GAME IN ${second} SECONDS. YOUR FINAL SCORE IS : <strong>${finalScore}</strong>`;
+            result(CWL2, CW2, finalScore);
+        }
+        return;
+    }
+
+    unflip();
+}
+
+

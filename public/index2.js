@@ -8,7 +8,7 @@ var counter = 0;
 var CWL;
 var CW;
 var second;
-var timeleft = 30;
+var timeleft = 40;
 var downloadTimer;
 var audio = document.getElementById("myAudio");
 var moves = 0; // Initialize the move counter
@@ -21,11 +21,7 @@ var imageData = [
     { path: "images/ember.svg", card: "ember" },
     { path: "images/ember.svg", card: "ember" },
     { path: "images/backbone.svg", card: "backbone" },
-    { path: "images/backbone.svg", card: "backbone" },
-    { path: "images/angular.svg", card: "angular" },
-    { path: "images/angular.svg", card: "angular" },
-    { path: "images/react.svg", card: "react" },
-    { path: "images/react.svg", card: "react" }
+    { path: "images/backbone.svg", card: "backbone" }
 ];
 // Function to dynamically create image elements with data-card attribute
 function createImageElements() {
@@ -42,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 // Function to calculate the final score based on moves and time
 function calculateScore(moves, time) {
-    var baseScore = 100;
+    var baseScore = 200;
     var score = baseScore - moves * 10 + time * 5;
     return Math.max(score, 0);
 }
@@ -135,48 +131,4 @@ function playAudio() {
 }
 function stopAudio() {
     audio.pause();
-}
-// Medium Level
-// Declaring variables
-var cards2 = document.querySelectorAll('.memory-card');
-var flippedcard2 = false;
-var firstcard2;
-var secondcard2;
-var totCards2 = 12;
-var counter2 = 0;
-var CWL2;
-var CW2;
-var second2;
-var timeleft2 = 40;
-var moves2 = 0; // Initialize the move counter
-// Function to flip the cards
-function flipcard2() {
-    this.classList.toggle('flip');
-    if (!flippedcard2) {
-        flippedcard2 = true;
-        firstcard2 = this;
-        return;
-    }
-    secondcard2 = this;
-    flippedcard2 = false;
-    moves2++; // Increment the move counter
-    // document.getElementById("moves")!.innerHTML = moves.toString();
-    matchMedium();
-}
-// Function to check the matching of cards
-function matchMedium() {
-    if ((firstcard2 === null || firstcard2 === void 0 ? void 0 : firstcard2.dataset.card) === (secondcard2 === null || secondcard2 === void 0 ? void 0 : secondcard2.dataset.card)) {
-        disable();
-        counter2++;
-        if (totCards2 / 2 === counter) {
-            clearInterval(downloadTimer);
-            second2 = 40 - timeleft2;
-            var finalScore = calculateScore(moves, second2); // Calculate the final score
-            CWL2 = "CONGRATULATIONS!!!";
-            CW2 = "YOU WON THE GAME IN ".concat(second, " SECONDS. YOUR FINAL SCORE IS : <strong>").concat(finalScore, "</strong>");
-            result(CWL2, CW2, finalScore);
-        }
-        return;
-    }
-    unflip();
 }

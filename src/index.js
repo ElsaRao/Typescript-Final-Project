@@ -147,6 +147,7 @@ var counter2 = 0;
 var CWL2;
 var CW2;
 var second2;
+var downloadTimer2;
 var timeleft2 = 40;
 var moves2 = 0; // Initialize the move counter
 // Function to flip the cards
@@ -180,3 +181,26 @@ function matchMedium() {
     }
     unflip();
 }
+// Counter function for Medium Level
+downloadTimer2 = setInterval(function () {
+    if (timeleft2 <= 0) {
+        clearInterval(downloadTimer2);
+        var buttonx = document.getElementsByClassName("buttonx")[1];
+        buttonx.setAttribute("disabled", "true");
+        buttonx.style.cursor = "not-allowed";
+        buttonx.style.opacity = "0.6";
+        var countdown2 = document.getElementById("countdown2");
+        countdown2.innerHTML = "Time Up!";
+        second2 = 40 - timeleft2;
+        var finalScore = calculateScore(moves2, second2); // Calculate the final score
+        CWL2 = "OPSS :(";
+        CW2 = "TIME IS OVER";
+        result(CWL2, CW2, finalScore);
+    }
+    else {
+        var countdown2 = document.getElementById("countdown2");
+        countdown2.innerHTML = timeleft2 + " seconds";
+    }
+    timeleft2 -= 1;
+}, 1000);
+cards2.forEach(function (card) { return card.addEventListener('click', flipcard2); });

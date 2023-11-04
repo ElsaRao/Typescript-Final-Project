@@ -165,6 +165,7 @@ let counter2 = 0;
 let CWL2: string | undefined;
 let CW2: string | undefined;
 let second2: number | undefined;
+let downloadTimer2: NodeJS.Timeout;
 let timeleft2 = 40;
 let moves2 = 0; // Initialize the move counter
 
@@ -207,5 +208,29 @@ function matchMedium(): void {
 
     unflip();
 }
+
+// Counter function for Medium Level
+downloadTimer2 = setInterval(function () {
+    if (timeleft2 <= 0) {
+        clearInterval(downloadTimer2);
+        let buttonx = document.getElementsByClassName("buttonx")[1] as HTMLElement;
+        buttonx.setAttribute("disabled", "true");
+        buttonx.style.cursor = "not-allowed";
+        buttonx.style.opacity = "0.6";
+        let countdown2 = document.getElementById("countdown2") as HTMLElement;
+        countdown2.innerHTML = "Time Up!";
+        second2 = 40 - timeleft2;
+        const finalScore = calculateScore(moves2, second2); // Calculate the final score
+        CWL2 = "OPSS :(";
+        CW2 = "TIME IS OVER";
+        result(CWL2, CW2, finalScore);
+    } else {
+        let countdown2 = document.getElementById("countdown2") as HTMLElement;
+        countdown2.innerHTML = timeleft2 + " seconds";
+    }
+    timeleft2 -= 1;
+}, 1000);
+
+cards2.forEach(card => card.addEventListener('click', flipcard2));
 
 

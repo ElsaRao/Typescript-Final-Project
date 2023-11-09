@@ -5,7 +5,7 @@
     font-family: 'Poppins', sans-serif;
   }
   body{
-  overflow-y: hidden;
+  overflow-y: auto;
   height: 100vh;
   }
   .container{
@@ -221,7 +221,7 @@
   
   .content {
   text-align: center;
-  padding: 5% auto;
+  padding: 5%;
   margin: 5% auto;
   }
   
@@ -274,7 +274,7 @@
   }
   
   .cover { 
-  display:block;
+  display:flex;
   width: auto;
   margin: auto;
   }

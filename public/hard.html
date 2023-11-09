@@ -16,7 +16,7 @@
     <style>
         @media only screen and (max-width:1450px){
     .memory-game{width: 550px;}
-    .height{height: 150px;}
+    .height{height: 120px;}
   }
       </style>
 </head>
@@ -24,11 +24,27 @@
 <body>
     <div class="body">
         <div class="container">
-            <h1 class="level1">Level 2</h1>
+            <h1 class="level1">Level 3</h1>
             <div class="countDown-div">
-                <h2 id="countdown2">40 seconds</h2>
+                <h2 id="countdown3">60 seconds</h2>
             </div>
             <section class="memory-game">
+                <div class="memory-card height" data-card="">
+                    <img class="front-face" src="" alt="Card" >
+                    <img class="back-face" src="images/js-badge.svg" alt="JS Badge" >
+                </div>
+                <div class="memory-card height" data-card="">
+                    <img class="front-face" src="" alt="Card" >
+                    <img class="back-face" src="images/js-badge.svg" alt="JS Badge" >
+                </div>
+                <div class="memory-card height" data-card="">
+                    <img class="front-face" src="" alt="Card" >
+                    <img class="back-face" src="images/js-badge.svg" alt="JS Badge" >
+                </div>
+                <div class="memory-card height" data-card="">
+                    <img class="front-face" src="" alt="Card" >
+                    <img class="back-face" src="images/js-badge.svg" alt="JS Badge" >
+                </div>
                 <div class="memory-card height" data-card="">
                     <img class="front-face" src="" alt="Card" >
                     <img class="back-face" src="images/js-badge.svg" alt="JS Badge" >
@@ -84,9 +100,8 @@
                     <div class="content" id="contectWrite">
                 </div>
                 <div class="cover"> 
-                    <button onclick="document.location='medium.html'" class="buttonx" style="vertical-align:middle"><span>REPLAY </span></button>
-                    <button onclick="document.location='hard.html'"class="buttonx" style="vertical-align:middle"><span class="level">NEXT LEVEL </span></button>
-                </div>
+                    <button onclick="document.location='hard.html'" class="buttonx" style="vertical-align:middle"><span>REPLAY </span></button>
+                    <button onclick="document.location='index.html'"class="buttonx" style="vertical-align:middle"><span class="level">HOME </span></button> </div>
             </div>
         </section>
         <audio preload="auto" id="myAudio">
@@ -97,7 +112,7 @@
             <i class="fas fa-volume-mute" onclick="stopAudio()"></i>
         </div>
     </div>    
-    <script src="indexMedium.js"></script>
+    <script src="indexHard.js"></script>
 </body>
 
 </html>

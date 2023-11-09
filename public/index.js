@@ -12,34 +12,6 @@ var timeleft = 30;
 var downloadTimer;
 var audio = document.getElementById("myAudio");
 var moves = 0; // Initialize the move counter
-// Image data
-var imageData = [
-    { path: "images/aurelia.svg", card: "aurelia" },
-    { path: "images/aurelia.svg", card: "aurelia" },
-    { path: "images/vue.svg", card: "vue" },
-    { path: "images/vue.svg", card: "vue" },
-    { path: "images/ember.svg", card: "ember" },
-    { path: "images/ember.svg", card: "ember" },
-    { path: "images/backbone.svg", card: "backbone" },
-    { path: "images/backbone.svg", card: "backbone" },
-    { path: "images/angular.svg", card: "angular" },
-    { path: "images/angular.svg", card: "angular" },
-    { path: "images/react.svg", card: "react" },
-    { path: "images/react.svg", card: "react" }
-];
-// Function to dynamically create image elements with data-card attribute
-function createImageElements() {
-    var memoryCards = document.querySelectorAll('.memory-card');
-    memoryCards.forEach(function (card, index) {
-        var frontFace = card.querySelector('.front-face');
-        frontFace.src = imageData[index].path;
-        card.setAttribute('data-card', imageData[index].card);
-    });
-}
-// Call the function when the page is loaded
-document.addEventListener('DOMContentLoaded', function () {
-    createImageElements();
-});
 // Function to calculate the final score based on moves and time
 function calculateScore(moves, time) {
     var baseScore = 100;
@@ -55,7 +27,42 @@ function result(CWL, CW, finalScore) {
     contentWonLost.innerHTML = CWL;
     var contectWrite = document.getElementById("contectWrite");
     contectWrite.innerHTML = CW;
+    var totalScore = calculateTotalScore(finalScore);
+    contectWrite.innerHTML = "Total Score: ".concat(totalScore);
 }
+function calculateTotalScore(levelScore) {
+    var totalScore = Number(localStorage.getItem('totalScore')) || 0;
+    totalScore += levelScore;
+    localStorage.setItem('totalScore', totalScore.toString());
+    return totalScore;
+}
+// Function to dynamically create image elements with data-card attribute
+function createImageElements(imageData) {
+    var memoryCards = document.querySelectorAll('.memory-card');
+    memoryCards.forEach(function (card, index) {
+        var frontFace = card.querySelector('.front-face');
+        frontFace.src = imageData[index].path;
+        card.setAttribute('data-card', imageData[index].card);
+    });
+}
+// Call the function when the page is loaded
+document.addEventListener('DOMContentLoaded', function () {
+    var imageData = [
+        { path: "images/aurelia.svg", card: "aurelia" },
+        { path: "images/aurelia.svg", card: "aurelia" },
+        { path: "images/vue.svg", card: "vue" },
+        { path: "images/vue.svg", card: "vue" },
+        { path: "images/ember.svg", card: "ember" },
+        { path: "images/ember.svg", card: "ember" },
+        { path: "images/backbone.svg", card: "backbone" },
+        { path: "images/backbone.svg", card: "backbone" },
+        { path: "images/angular.svg", card: "angular" },
+        { path: "images/angular.svg", card: "angular" },
+        { path: "images/react.svg", card: "react" },
+        { path: "images/react.svg", card: "react" }
+    ];
+    createImageElements(imageData);
+});
 // Function to flip the cards
 function flipcard() {
     this.classList.toggle('flip');
@@ -136,71 +143,3 @@ function playAudio() {
 function stopAudio() {
     audio.pause();
 }
-// Medium Level
-// Declaring variables
-var cards2 = document.querySelectorAll('.memory-card');
-var flippedcard2 = false;
-var firstcard2;
-var secondcard2;
-var totCards2 = 12;
-var counter2 = 0;
-var CWL2;
-var CW2;
-var second2;
-var downloadTimer2;
-var timeleft2 = 40;
-var moves2 = 0; // Initialize the move counter
-// Function to flip the cards
-function flipcard2() {
-    this.classList.toggle('flip');
-    if (!flippedcard2) {
-        flippedcard2 = true;
-        firstcard2 = this;
-        return;
-    }
-    secondcard2 = this;
-    flippedcard2 = false;
-    moves2++; // Increment the move counter
-    // document.getElementById("moves")!.innerHTML = moves.toString();
-    matchMedium();
-}
-// Function to check the matching of cards
-function matchMedium() {
-    if ((firstcard2 === null || firstcard2 === void 0 ? void 0 : firstcard2.dataset.card) === (secondcard2 === null || secondcard2 === void 0 ? void 0 : secondcard2.dataset.card)) {
-        disable();
-        counter2++;
-        if (totCards2 / 2 === counter) {
-            clearInterval(downloadTimer);
-            second2 = 40 - timeleft2;
-            var finalScore = calculateScore(moves, second2); // Calculate the final score
-            CWL2 = "CONGRATULATIONS!!!";
-            CW2 = "YOU WON THE GAME IN ".concat(second, " SECONDS. YOUR FINAL SCORE IS : <strong>").concat(finalScore, "</strong>");
-            result(CWL2, CW2, finalScore);
-        }
-        return;
-    }
-    unflip();
-}
-// Counter function for Medium Level
-downloadTimer2 = setInterval(function () {
-    if (timeleft2 <= 0) {
-        clearInterval(downloadTimer2);
-        var buttonx = document.getElementsByClassName("buttonx")[1];
-        buttonx.setAttribute("disabled", "true");
-        buttonx.style.cursor = "not-allowed";
-        buttonx.style.opacity = "0.6";
-        var countdown2 = document.getElementById("countdown2");
-        countdown2.innerHTML = "Time Up!";
-        second2 = 40 - timeleft2;
-        var finalScore = calculateScore(moves2, second2); // Calculate the final score
-        CWL2 = "OPSS :(";
-        CW2 = "TIME IS OVER";
-        result(CWL2, CW2, finalScore);
-    }
-    else {
-        var countdown2 = document.getElementById("countdown2");
-        countdown2.innerHTML = timeleft2 + " seconds";
-    }
-    timeleft2 -= 1;
-}, 1000);
-cards2.forEach(function (card) { return card.addEventListener('click', flipcard2); });

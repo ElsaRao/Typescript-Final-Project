@@ -31,6 +31,19 @@
             <div class="wrap">
                 <a href="hard.html" class="button">Hard</a>
             </div>
+            <div class="arrow-down">
+                <img src="images/arrow-down.gif" alt="Arrow down">
+            </div>
+            <div class="instructions-popup">
+                <button value="Instructions" class="instruction-btn" onclick="openModal()">Instructions</button>
+                <div class="overlay" id="myModal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeModal()">x</span>
+                        <h4>Instructions</h4>
+                        <p id="instructions"></p>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="members">
             <h3 id="members-title">Elsa Zehra</h3>
@@ -40,6 +53,58 @@
                 <li><span><i class="far fa-arrow-circle-right"></i></span>Elsa Zehra</li>
             </ul> -->
         </div>
+        <audio preload="auto" id="myAudio">
+            <source src="audio/zen-garden.mp3" type="audio/mp3">
+        </audio>
+        <div class="music">
+            <i class="fas fa-volume-up" onclick="playAudio()"></i>
+            <i class="fas fa-volume-mute" onclick="stopAudio()"></i>
+        </div>
     </div>
+    <script>
+
+        // Function to display the instructions in the modal popup
+function displayInstructionsInModal() {
+    var instructions = [
+        "<span>1</span> Click on the cards to reveal their images.",
+        "<span>2</span> Memorize the position of each image for future matches.",
+        "<span>3</span> Select another card to uncover its hidden image.",
+        "<span>4</span> Successfully matched cards will remain open, while unmatched cards will flip back.",
+        "<span>5</span> Your objective is to pair all the cards within the given time frame.",
+        "<span>6</span> Strive for efficiency by using as few moves as possible and completing the game swiftly.",
+        "<span>7</span> Your final score is determined by a combination of your total moves and the time remaining.",
+        "<span>8</span> Challenge yourself to achieve the highest score by optimizing your memory and speed.",
+        "<span>9</span> Enjoy the experience and test your cognitive skills in this engaging memory challenge."
+    ];
+    var instructionsElement = document.getElementById("instructions");
+    if (instructionsElement) {
+        instructionsElement.innerHTML = instructions.join("<br>");
+    }
+    var modal = document.getElementById("myModal");
+    if (modal) {
+        modal.style.display = "flex";
+        modal.style.opacity = 1;
+        modal.style.visibility = 'visible';
+    }
+}
+// Function to close the modal popup
+function closeModal() {
+    var modal = document.getElementById("myModal");
+    if (modal) {
+        modal.style.display = "none";
+    }
+}
+// Function to open the modal popup
+function openModal() {
+    displayInstructionsInModal();
+}
+var audio = document.getElementById("myAudio");
+function playAudio() {
+    audio.play();
+}
+function stopAudio() {
+    audio.pause();
+}
+    </script>
 </body>
 </html>

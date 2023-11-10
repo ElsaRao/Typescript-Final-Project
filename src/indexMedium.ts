@@ -12,7 +12,9 @@ let CW2: string | undefined;
 let second2: number | undefined;
 let downloadTimer2: NodeJS.Timeout;
 let timeleft2 = 40;
-let moves2 = 0; // Initialize the move counter
+let moves2 = 0;
+let audioMedium = document.getElementById("myAudio") as HTMLMediaElement;
+
 
 function calculateScore2(moves: number, time: number): number {
     const baseScore = 100;
@@ -160,9 +162,11 @@ function result2(CWL: string, CW: string, finalScore: number): void {
     contectWrite.innerHTML = CW;
 }
 
-// Function to display the total score on the final score screen
-function displayTotalScore(): void {
-    const totalScore = Number(localStorage.getItem('totalScore')) || 0;
-    let totalScoreElement = document.getElementById('totalScore') as HTMLElement;
-    totalScoreElement.innerText = `Total Score: ${totalScore}`;
+
+function playAudiomedium(): void {
+    audioMedium.play();
+}
+
+function stopAudiomedium(): void {
+    audioMedium.pause();
 }

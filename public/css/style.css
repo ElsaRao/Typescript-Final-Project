@@ -122,7 +122,7 @@
   text-shadow: 1px 1px 4px #000;
   font-family: 'Dancing Script', cursive;;
   display: flex;
-  justify-content: center;
+  justify-content: center;position: relative;
   padding-top: 3%;
   }
   .game-sub{
@@ -130,7 +130,7 @@
   text-align: center;
   text-shadow: 1px 1px 3px #000;
   color: #fff;
-  font-family: 'Dancing Script', cursive;;
+  font-family: 'Dancing Script', cursive;position: relative;
   }
   .wrap {
   display: flex;
@@ -143,7 +143,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 12%;
+  margin-top: 6%;
   text-align: center;
   }
   
@@ -209,7 +209,7 @@
   opacity: 1;
   }
   
-  .popup {
+  .popup,.modal-content {
   margin: 20% auto 0px auto;
   padding: 20px;
   background: #fff;
@@ -218,6 +218,51 @@
   position: relative;
   transition: all 5s ease-in-out;
   }
+
+  #myModal.overlay {
+    top: 0%;
+    bottom: 0;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+  }
+  .modal-content {width: 55%;
+    margin: auto;}
+
+    .modal-content p{line-height: 45px;
+      font-size: 14px;
+      text-align: left;
+      font-weight: 400;
+      font-weight: 400;
+    font-family: 'Signika Negative';
+    padding: 30px;}
+    .modal-content p#instructions span {
+      color: #FFF;
+      background-color: rgb(30, 13, 104);
+      border-radius: 50%;
+      padding: 5px 10px;
+      width: 20px;
+      height: 20px;
+      font-weight: 400;
+      font-family: 'Signika Negative';
+      margin-right: 10px;
+      position: relative;
+  }
+  
+  .modal-content p#instructions span:after {
+      content: '';
+      position: absolute;
+      width: 2px;
+      height: 100%;
+      background-color: rgb(30, 13, 104);
+      bottom: -20px;
+      left: 0;
+      right: 0;
+      margin: auto;
+  }
+
+  .modal-content p#instructions span:nth-last-child(1):after { display: none; }
+
   
   .content {
   text-align: center;
@@ -337,4 +382,45 @@
   #members-title{
     color: rgb(54 5 173 / 64%);
   }
+
+  body button.instruction-btn {
+    background: #FFF;
+    border: none;
+    width: 180px;
+    height: 50px;
+    padding: 10px;
+    color: rgb(30, 13, 104);
+    cursor: pointer;
+    font-family: 'Signika Negative', sans-serif;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    font-weight: 400;
+    /* border-radius: 1000px; */
+    border-radius: 5px;
+    font-weight: 700;
+}
+.modal-content span.close {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  background-color: rgb(30, 13, 104);
+  border-radius: 50%;
+  /* height: 25px; */
+  /* width: 25px; */
+  color: #FFF;
+  font-family: 'Signika Negative';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  padding: 15px 11px;
+  font-size: 16px;
+  line-height: 0;
+  margin: 0;
+  cursor: pointer;
+}
+body .modal-content h4 { width: 300px; margin: auto; background: linear-gradient(90deg, rgb(30, 13, 104) 0%, rgb(3, 19, 97) 100%); position: absolute; left: 0; right: 0; margin: auto; top: -30px; height: 60px; display: flex; justify-content: center; align-items: center; color: #000; background: #FFF; border-radius: 5px; font-size: 25px; font-family: 'Poppins'; box-shadow: 0px -48px 233px -17px rgba(0,0,0,0.5); -webkit-box-shadow: 0px -198px 233px -17px rgba(0,0,0,0.5); -moz-box-shadow: 0px -48px 233px -17px rgba(0,0,0,0.5); padding: 10px; }
+.back-to-home { display: flex; position: absolute; top: 3%; left: 3%; align-items: center; }
+body .back-to-home p { color: #FFF; margin-left: 6px; font-size: 12px; }
  

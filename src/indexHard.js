@@ -11,7 +11,8 @@ var CW3;
 var second3;
 var downloadTimer3;
 var timeleft3 = 60;
-var moves3 = 0; // Initialize the move counter
+var moves3 = 0;
+var audioHard = document.getElementById("myAudio");
 function calculateScore3(moves, time) {
     var baseScore = 100;
     var score = baseScore - moves * 10 + time * 5;
@@ -165,9 +166,9 @@ function result3(CWL, CW, finalScore) {
     var contectWrite = document.getElementById("contectWrite");
     contectWrite.innerHTML = CW;
 }
-// Function to display the total score on the final score screen
-function displayTotalScore2() {
-    var totalScore = Number(localStorage.getItem('totalScore')) || 0;
-    var totalScoreElement = document.getElementById('totalScore');
-    totalScoreElement.innerText = "Total Score: ".concat(totalScore);
+function playAudio() {
+    audioHard.play();
+}
+function stopAudio() {
+    audioHard.pause();
 }

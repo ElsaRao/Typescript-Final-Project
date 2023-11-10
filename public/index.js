@@ -137,9 +137,9 @@ downloadTimer = setInterval(function () {
     }
     timeleft -= 1;
 }, 1000);
-function playAudio() {
+function playAudioeasy() {
     audio.play();
 }
-function stopAudio() {
+function stopAudioeasy() {
     audio.pause();
 }

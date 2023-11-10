@@ -1,3 +1,4 @@
+
 // Declaring variables
 let cards = document.querySelectorAll('.memory-card') as NodeListOf<HTMLElement>;
 let flippedcard = false;
@@ -153,11 +154,11 @@ downloadTimer = setInterval(function () {
     timeleft -= 1;
 }, 1000);
 
-function playAudio(): void {
+function playAudioeasy(): void {
     audio.play();
 }
 
-function stopAudio(): void {
+function stopAudioeasy(): void {
     audio.pause();
 }
 

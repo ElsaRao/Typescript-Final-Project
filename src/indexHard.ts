@@ -101,7 +101,7 @@ downloadTimer3 = setInterval(function () {
         countdown2.innerHTML = "Time Up!";
         second3 = 60 - timeleft3;
         const finalScore = calculateScore3(moves3, second3); // Calculate the final score
-        CWL3 = "OPSS :(";
+        CWL3 = "OOPS :(";
         CW3 = "TIME IS OVER";
         result3(CWL3, CW3, finalScore);
     } else {
@@ -161,7 +161,7 @@ function unflipHard(): void {
     setTimeout(function () {
         firstcard3?.classList.remove('flip');
         secondcard3?.classList.remove('flip');
-    }, 1000);
+    }, 500);
 }
 
 // Function to shuffle the cards

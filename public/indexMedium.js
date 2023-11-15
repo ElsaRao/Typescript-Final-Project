@@ -86,7 +86,7 @@ downloadTimer2 = setInterval(function () {
         countdown2.innerHTML = "Time Up!";
         second2 = 40 - timeleft2;
         var finalScore = calculateScore2(moves2, second2); // Calculate the final score
-        CWL2 = "OPSS :(";
+        CWL2 = "OOPS :(";
         CW2 = "TIME IS OVER";
         result2(CWL2, CW2, finalScore);
     }
@@ -124,7 +124,7 @@ function unflipMedium() {
     setTimeout(function () {
         firstcard2 === null || firstcard2 === void 0 ? void 0 : firstcard2.classList.remove('flip');
         secondcard2 === null || secondcard2 === void 0 ? void 0 : secondcard2.classList.remove('flip');
-    }, 1000);
+    }, 500);
 }
 // Function to shuffle the cards
 function shuffle2() {

@@ -27,15 +27,15 @@ function result(CWL, CW, finalScore) {
     contentWonLost.innerHTML = CWL;
     var contectWrite = document.getElementById("contectWrite");
     contectWrite.innerHTML = CW;
-    var totalScore = calculateTotalScore(finalScore);
-    contectWrite.innerHTML = "Total Score: ".concat(totalScore);
+    // const totalScore = calculateTotalScore(finalScore);
+    // contectWrite.innerHTML = `Total Score: ${totalScore}`;
 }
-function calculateTotalScore(levelScore) {
-    var totalScore = Number(localStorage.getItem('totalScore')) || 0;
-    totalScore += levelScore;
-    localStorage.setItem('totalScore', totalScore.toString());
-    return totalScore;
-}
+// function calculateTotalScore(levelScore: number): number {
+//     let totalScore = Number(localStorage.getItem('totalScore')) || 0;
+//     totalScore += levelScore;
+//     localStorage.setItem('totalScore', totalScore.toString());
+//     return totalScore;
+// }
 // Function to dynamically create image elements with data-card attribute
 function createImageElements(imageData) {
     var memoryCards = document.querySelectorAll('.memory-card');
@@ -104,7 +104,7 @@ function unflip() {
     setTimeout(function () {
         firstcard === null || firstcard === void 0 ? void 0 : firstcard.classList.remove('flip');
         secondcard === null || secondcard === void 0 ? void 0 : secondcard.classList.remove('flip');
-    }, 1000);
+    }, 500);
 }
 // Function to shuffle the cards
 function shuffle() {
@@ -127,7 +127,7 @@ downloadTimer = setInterval(function () {
         countdown.innerHTML = "Time Up!";
         second = 30 - timeleft;
         var finalScore = calculateScore(moves, second); // Calculate the final score
-        CWL = "OPSS :(";
+        CWL = "OOPS :(";
         CW = "TIME IS OVER";
         result(CWL, CW, finalScore);
     }

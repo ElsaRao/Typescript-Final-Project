@@ -96,7 +96,7 @@ downloadTimer2 = setInterval(function () {
         countdown2.innerHTML = "Time Up!";
         second2 = 40 - timeleft2;
         const finalScore = calculateScore2(moves2, second2); // Calculate the final score
-        CWL2 = "OPSS :(";
+        CWL2 = "OOPS :(";
         CW2 = "TIME IS OVER";
         result2(CWL2, CW2, finalScore);
     } else {
@@ -138,7 +138,7 @@ function unflipMedium(): void {
     setTimeout(function () {
         firstcard2?.classList.remove('flip');
         secondcard2?.classList.remove('flip');
-    }, 1000);
+    }, 500);
 }
 
 // Function to shuffle the cards

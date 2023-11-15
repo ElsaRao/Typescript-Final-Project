@@ -93,10 +93,10 @@ function flipcard3(this: HTMLElement): void {
 downloadTimer3 = setInterval(function () {
     if (timeleft3 <= 0) {
         clearInterval(downloadTimer3);
-        let buttonx = document.getElementsByClassName("buttonx")[1] as HTMLElement;
-        buttonx.setAttribute("disabled", "true");
-        buttonx.style.cursor = "not-allowed";
-        buttonx.style.opacity = "0.6";
+        // let buttonx = document.getElementsByClassName("buttonx")[1] as HTMLElement;
+        // buttonx.setAttribute("disabled", "true");
+        // buttonx.style.cursor = "not-allowed";
+        // buttonx.style.opacity = "0.6";
         let countdown2 = document.getElementById("countdown3") as HTMLElement;
         countdown2.innerHTML = "Time Up!";
         second3 = 60 - timeleft3;

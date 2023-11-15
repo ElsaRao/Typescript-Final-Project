@@ -129,8 +129,6 @@ function matchHard() {
             clearInterval(downloadTimer3);
             second3 = 60 - timeleft3;
             var finalScore = calculateScore3(moves3, second3); // Calculate the final score
-            var level = document.getElementsByClassName("level")[0];
-            level.style.cursor = "pointer";
             CWL3 = "CONGRATULATIONS!!!";
             CW3 = "YOU WON THE GAME IN ".concat(second3, " SECONDS. YOUR FINAL SCORE IS : <strong>").concat(finalScore, "</strong>");
             result3(CWL3, CW3, finalScore);

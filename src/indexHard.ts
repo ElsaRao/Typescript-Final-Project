@@ -140,8 +140,6 @@ function matchHard(): void {
             clearInterval(downloadTimer3);
             second3 = 60 - timeleft3;
             const finalScore = calculateScore3(moves3, second3); // Calculate the final score
-            let level = document.getElementsByClassName("level")[0] as HTMLSpanElement;
-            level.style.cursor = "pointer";
             CWL3 = "CONGRATULATIONS!!!";
             CW3 = `YOU WON THE GAME IN ${second3} SECONDS. YOUR FINAL SCORE IS : <strong>${finalScore}</strong>`;
             result3(CWL3, CW3, finalScore);

@@ -106,6 +106,8 @@ function matchMedium() {
             clearInterval(downloadTimer2);
             second2 = 40 - timeleft2;
             var finalScore = calculateScore2(moves2, second2); // Calculate the final score
+            var level = document.getElementsByClassName("level")[0];
+            level.style.cursor = "pointer";
             CWL2 = "CONGRATULATIONS!!!";
             CW2 = "YOU WON THE GAME IN ".concat(second2, " SECONDS. YOUR FINAL SCORE IS : <strong>").concat(finalScore, "</strong>");
             result2(CWL2, CW2, finalScore);

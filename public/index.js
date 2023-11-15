@@ -86,6 +86,8 @@ function match() {
             clearInterval(downloadTimer);
             second = 30 - timeleft;
             var finalScore = calculateScore(moves, second); // Calculate the final score
+            var level = document.getElementsByClassName("level")[0];
+            level.style.cursor = "pointer";
             CWL = "CONGRATULATIONS!!!";
             CW = "YOU WON THE GAME IN ".concat(second, " SECONDS. YOUR FINAL SCORE IS : <strong>").concat(finalScore, "</strong>");
             result(CWL, CW, finalScore);
@@ -120,8 +122,11 @@ downloadTimer = setInterval(function () {
     if (timeleft <= 0) {
         clearInterval(downloadTimer);
         var buttonx = document.getElementsByClassName("buttonx")[1];
+        // let level = document.getElementsByClassName("level")[2] as HTMLSpanElement;
         buttonx.setAttribute("disabled", "true");
         buttonx.style.cursor = "not-allowed";
+        // level.setAttribute("disabled", "true");
+        // level.style.cursor = "not-allowed";
         buttonx.style.opacity = "0.6";
         var countdown = document.getElementById("countdown");
         countdown.innerHTML = "Time Up!";

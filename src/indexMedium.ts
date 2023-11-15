@@ -117,6 +117,8 @@ function matchMedium(): void {
             clearInterval(downloadTimer2);
             second2 = 40 - timeleft2;
             const finalScore = calculateScore2(moves2, second2); // Calculate the final score
+            let level = document.getElementsByClassName("level")[0] as HTMLSpanElement;
+            level.style.cursor = "pointer";
             CWL2 = "CONGRATULATIONS!!!";
             CW2 = `YOU WON THE GAME IN ${second2} SECONDS. YOUR FINAL SCORE IS : <strong>${finalScore}</strong>`;
             result2(CWL2, CW2, finalScore);
